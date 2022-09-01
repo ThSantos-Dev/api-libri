@@ -4,12 +4,14 @@ const app = express()
 
 const PORT = 3000 || process.env.PORT;
 
-app.get("/", (req: Request, res: Response) => {
+// Configurando o express
+app.use(express.json())
+app.use(express.urlencoded({extended: true}))
 
-  const { ...data } = req.query;
+// Configurando rotas
+import BookRoutes from './src/routes/BookRoutes'
 
-  res.json(data).status(200);
-});
+app.use('/books', BookRoutes)
 
 app.listen(PORT, (): void => {
   console.log(`A aplicação está rodando em: http://localhost:${PORT} 🚀`);
