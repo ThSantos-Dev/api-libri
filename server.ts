@@ -6,7 +6,7 @@ const PORT = 3000 || process.env.PORT;
 
 // Configurando o express
 app.use(express.json())
-app.use(express.urlencoded({extended: true}))
+app.use(express.urlencoded({extended: false}))
 
 // Configurando rotas
 import BookRoutes from './src/routes/BookRoutes'
