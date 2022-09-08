@@ -2,15 +2,20 @@
 import { Router } from "express";
 
 // Import da controller de livro
-import BookController from "../controllers/BookController";
+import CreateBookController from "../controllers/Book/CreateBookController";
+import DeleteBookController from "../controllers/Book/DeleteBookController";
+import FindAllBooksController from "../controllers/Book/FindAllBooksController";
+import FindBookByIdController from "../controllers/Book/FindBookByIdController";
+import UpdateBookController from "../controllers/Book/UpdateBookController";
 
 // Instanciando o Router
 const router = Router();
 
 // Rotas públicas
-router.get("/", BookController.getAll);
-router.post("/", BookController.create);
-router.put("/:id", BookController.update);
-router.delete("/:id", BookController.delete);
+router.post("/", CreateBookController.execute)
+router.get("/", FindAllBooksController.execute);
+router.get("/:id", FindBookByIdController.execute);
+router.put("/:id", UpdateBookController.execute);
+router.delete("/:id", DeleteBookController.execute);
 
 export default router;
